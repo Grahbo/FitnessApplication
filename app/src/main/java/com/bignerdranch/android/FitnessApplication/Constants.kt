@@ -1,4 +1,4 @@
-package com.bignerdranch.android.plainolnotes
+package com.bignerdranch.android.FitnessApplication
 
 const val NEW_NOTE_ID = 0
 const val TAG = "noteLogging"

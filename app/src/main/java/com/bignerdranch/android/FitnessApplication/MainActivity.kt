@@ -1,7 +1,8 @@
-package com.bignerdranch.android.plainolnotes
+package com.bignerdranch.android.FitnessApplication
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.bignerdranch.android.plainolnotes.R
 
 //my Main Activity
 

@@ -1,14 +1,16 @@
-package com.bignerdranch.android.plainolnotes
+package com.bignerdranch.android.FitnessApplication
 
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.bignerdranch.android.plainolnotes.data.NoteEntity
+import com.bignerdranch.android.plainolnotes.R
+import com.bignerdranch.android.FitnessApplication.data.NoteEntity
 import com.bignerdranch.android.plainolnotes.databinding.ListItemBinding
 
 class NotesListAdapter(private val notesList: List<NoteEntity>,
-    private val listener: ListItemListener) :
+                       private val listener: ListItemListener
+) :
 
     RecyclerView.Adapter<NotesListAdapter.ViewHolder>() {
 

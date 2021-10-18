@@ -1,4 +1,4 @@
-package com.bignerdranch.android.plainolnotes.data
+package com.bignerdranch.android.FitnessApplication.data
 
 import androidx.lifecycle.LiveData
 import androidx.room.*

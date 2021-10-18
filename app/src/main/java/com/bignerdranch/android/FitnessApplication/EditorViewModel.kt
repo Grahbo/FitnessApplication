@@ -1,12 +1,12 @@
-package com.bignerdranch.android.plainolnotes
+package com.bignerdranch.android.FitnessApplication
 
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.bignerdranch.android.plainolnotes.data.AppDataBase
-import com.bignerdranch.android.plainolnotes.data.NoteEntity
+import com.bignerdranch.android.FitnessApplication.data.AppDataBase
+import com.bignerdranch.android.FitnessApplication.data.NoteEntity
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext

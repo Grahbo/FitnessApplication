@@ -1,4 +1,4 @@
-package com.bignerdranch.android.plainolnotes.data
+package com.bignerdranch.android.FitnessApplication.data
 
 import android.content.Context
 import androidx.room.*
@@ -8,7 +8,7 @@ import java.security.AccessControlContext
 @TypeConverters(DateConvertor::class)
 abstract class AppDataBase: RoomDatabase() {
     
-    abstract fun  noteDao():NoteDao?
+    abstract fun  noteDao(): NoteDao?
 
     companion object{
         private var INSTANCE: AppDataBase? = null

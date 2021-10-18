@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">PlainOlNotes</string>
+    <string name="app_name">FitnessApplication</string>
     <string name="notes">Notes</string>
     <string name="enter_note">Enter note</string>
     <string name="add_sample_data">Add Sample Data</string>

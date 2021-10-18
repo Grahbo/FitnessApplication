@@ -1,4 +1,4 @@
-package com.bignerdranch.android.plainolnotes
+package com.bignerdranch.android.FitnessApplication
 
 import android.os.Bundle
 import android.os.Handler
@@ -12,11 +12,12 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.bignerdranch.android.plainolnotes.data.NoteEntity
+import com.bignerdranch.android.plainolnotes.R
+import com.bignerdranch.android.FitnessApplication.data.NoteEntity
 import com.bignerdranch.android.plainolnotes.databinding.MainFragmentBinding
 
 class MainFragment : Fragment(),
-    NotesListAdapter.ListItemListener{
+    NotesListAdapter.ListItemListener {
 
     private lateinit var viewModel: MainViewModel
     private lateinit var binding: MainFragmentBinding
@@ -114,7 +115,8 @@ class MainFragment : Fragment(),
 
     override fun onSaveInstanceState(outState: Bundle) {
         if (this::adapter.isInitialized){
-            outState.putParcelableArrayList(SELECTED_NOTES_KEY,
+            outState.putParcelableArrayList(
+                SELECTED_NOTES_KEY,
             adapter.selectedNotes)
         }
         super.onSaveInstanceState(outState)

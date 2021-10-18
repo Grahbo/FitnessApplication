@@ -1,9 +1,9 @@
-package com.bignerdranch.android.plainolnotes.data
+package com.bignerdranch.android.FitnessApplication.data
 
 import android.os.Parcelable
 import androidx.room.Entity
 import androidx.room.PrimaryKey
-import com.bignerdranch.android.plainolnotes.NEW_NOTE_ID
+import com.bignerdranch.android.FitnessApplication.NEW_NOTE_ID
 import kotlinx.android.parcel.Parcelize
 import java.util.*
 
