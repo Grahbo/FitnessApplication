@@ -4,9 +4,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.bignerdranch.android.plainolnotes.R
 import com.bignerdranch.android.FitnessApplication.data.NoteEntity
-import com.bignerdranch.android.plainolnotes.databinding.ListItemBinding
+import com.bignerdranch.android.FitnessApplication.databinding.ListItemBinding
 
 class NotesListAdapter(private val notesList: List<NoteEntity>,
                        private val listener: ListItemListener

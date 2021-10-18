@@ -15,8 +15,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
-import com.bignerdranch.android.plainolnotes.R
-import com.bignerdranch.android.plainolnotes.databinding.EditorFragmentBinding
+import com.bignerdranch.android.FitnessApplication.databinding.EditorFragmentBinding
 
 class EditorFragment : Fragment() {
 

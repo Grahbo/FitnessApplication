@@ -12,9 +12,9 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.bignerdranch.android.plainolnotes.R
+import com.bignerdranch.android.FitnessApplication.R
 import com.bignerdranch.android.FitnessApplication.data.NoteEntity
-import com.bignerdranch.android.plainolnotes.databinding.MainFragmentBinding
+import com.bignerdranch.android.FitnessApplication.databinding.MainFragmentBinding
 
 class MainFragment : Fragment(),
     NotesListAdapter.ListItemListener {
