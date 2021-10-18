@@ -17,7 +17,7 @@ class SampleDataProvider {
             return Date( Date().time + diff)
         }
 
-        fun getNotes() = arrayListOf (
+        fun getworkouts() = arrayListOf (
             WorkOutEntity(getDate(0), sampleText1),
             WorkOutEntity(getDate(1), sampleText2),
             WorkOutEntity(getDate(2), sampleText3)

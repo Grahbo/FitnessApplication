@@ -39,7 +39,7 @@ class EditorFragment : Fragment() {
         setHasOptionsMenu(true)
 
         requireActivity().title =
-            if(args.noteId == NEW_WORKOUT_ID) {
+            if(args.workOutId == NEW_WORKOUT_ID) {
                 getString(R.string.new_workout)
             }else{
                 getString(R.string.edit_note)
@@ -58,13 +58,13 @@ class EditorFragment : Fragment() {
                 }
         })
 
-        viewModel.currentNote.observe(viewLifecycleOwner, Observer {
+        viewModel.currentWorkOut.observe(viewLifecycleOwner, Observer {
             val savedString = savedInstanceState?.getString(FITNESS_TEXT_KEY)
             val cursorPosition = savedInstanceState?.getInt(CURSOR_POSITION_KEY) ?: 0
             binding.editor.setText(savedString?: it.text)
             binding.editor.setSelection(cursorPosition)
         })
-        viewModel.getNoteById(args.noteId)
+        viewModel.getWorkOutById(args.workOutId)
 
         return binding.root
     }
@@ -82,7 +82,7 @@ class EditorFragment : Fragment() {
             .getSystemService(Activity.INPUT_METHOD_SERVICE)as InputMethodManager
         imm.hideSoftInputFromWindow(binding.root.windowToken, 0)
 
-        viewModel.currentNote.value?.text = binding.editor.text.toString()
+        viewModel.currentWorkOut.value?.text = binding.editor.text.toString()
         viewModel.updateNote()
 
         findNavController().navigateUp()

@@ -7,13 +7,13 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bignerdranch.android.FitnessApplication.data.WorkOutEntity
 import com.bignerdranch.android.FitnessApplication.databinding.ListItemBinding
 
-class WorkOutListAdapter(private val notesList: List<WorkOutEntity>,
+class WorkOutListAdapter(private val workoutsList: List<WorkOutEntity>,
                          private val listener: ListItemListener
 ) :
 
     RecyclerView.Adapter<WorkOutListAdapter.ViewHolder>() {
 
-    val selectedNotes = arrayListOf<WorkOutEntity>()
+    val selectedworkouts = arrayListOf<WorkOutEntity>()
 
     inner class ViewHolder(itemView: View) :
         RecyclerView.ViewHolder(itemView) {
@@ -26,29 +26,29 @@ class WorkOutListAdapter(private val notesList: List<WorkOutEntity>,
         return ViewHolder(view)
     }
 
-    override fun getItemCount() = notesList.size
+    override fun getItemCount() = workoutsList.size
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        val note = notesList[position]
+        val workout = workoutsList[position]
         with(holder.binding) {
-            noteText.text = note.text
+            workOutText.text = workout.text
             root.setOnClickListener{
-                listener.editNote(note.id)
+                listener.editWorkOut(workout.id)
             }
 
             fab.setOnClickListener {
-                if(selectedNotes.contains(note)){
-                    selectedNotes.remove(note)
+                if(selectedworkouts.contains(workout)){
+                    selectedworkouts.remove(workout)
                     fab.setImageResource(R.drawable.ic_note)
                 }else{
-                    selectedNotes.add(note)
+                    selectedworkouts.add(workout)
                     fab.setImageResource(R.drawable.ic_check)
                 }
                 listener.onItemSelectionChanged()
             }
 
             fab.setImageResource(
-                if (selectedNotes.contains(note)){
+                if (selectedworkouts.contains(workout)){
                     R.drawable.ic_check
                 }else{
                     R.drawable.ic_note
@@ -58,7 +58,7 @@ class WorkOutListAdapter(private val notesList: List<WorkOutEntity>,
     }
 
     interface ListItemListener{
-        fun editNote(noteId: Int)
+        fun editWorkOut(workOutId: Int)
         fun onItemSelectionChanged()
     }
 }

@@ -28,14 +28,14 @@ class DatabaseTest {
             .allowMainThreadQueries()
             .build()
 
-        dao = database.noteDao()!!
+        dao = database.workOutDao()!!
     }
 
     @Test
-    fun createNotes() {
-        dao.insertAll(SampleDataProvider.getNotes())
+    fun createworkouts() {
+        dao.insertAll(SampleDataProvider.getworkouts())
         val count = dao.getCount()
-        assertEquals(count, SampleDataProvider.getNotes().size)
+        assertEquals(count, SampleDataProvider.getworkouts().size)
     }
 
     @Test
@@ -43,7 +43,7 @@ class DatabaseTest {
         val note = WorkOutEntity()
         note.text = "some text"
         dao.insertNote(note)
-        val savedNote = dao.getNoteById(1)
+        val savedNote = dao.getWorkOutById(1)
 
         assertEquals(savedNote?.id ?: 0, 1)
     }

@@ -12,24 +12,24 @@ import kotlinx.coroutines.withContext
 
 class EditorViewModel(app: Application) : AndroidViewModel(app) {
     private val database = AppDB.getInstance(app)
-    val currentNote = MutableLiveData<WorkOutEntity>()
+    val currentWorkOut = MutableLiveData<WorkOutEntity>()
 
-    fun getNoteById(noteId: Int){
+    fun getWorkOutById(workOutId: Int){
         viewModelScope.launch {
             withContext(Dispatchers.IO){
                 val note =
-                    if (noteId != NEW_WORKOUT_ID){
-                        database?.noteDao()?.getWorkOutById(noteId)
+                    if (workOutId != NEW_WORKOUT_ID){
+                        database?.workOutDao()?.getWorkOutById(workOutId)
                     }else{
                         WorkOutEntity()
                     }
-                currentNote.postValue(note!!)
+                currentWorkOut.postValue(note!!)
             }
         }
     }
 
     fun updateNote() {
-        currentNote.value?.let{
+        currentWorkOut.value?.let{
             it.text = it.text.trim()
             if(it.id == NEW_WORKOUT_ID && it.text.isEmpty()){
                 return
@@ -38,9 +38,9 @@ class EditorViewModel(app: Application) : AndroidViewModel(app) {
             viewModelScope.launch {
                 withContext(Dispatchers.IO){
                     if(it.text.isEmpty()){
-                        database?.noteDao()?.deleteWorkOut(it)
+                        database?.workOutDao()?.deleteWorkOut(it)
                     }else{
-                        database?.noteDao()?.insertNote(it)
+                        database?.workOutDao()?.insertNote(it)
                     }
                 }
             }

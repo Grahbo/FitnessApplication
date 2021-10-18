@@ -19,7 +19,7 @@
         app:srcCompat="@drawable/ic_note" />
 
     <TextView
-        android:id="@+id/noteText"
+        android:id="@+id/work_out_text"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:ellipsize="end"

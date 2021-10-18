@@ -14,29 +14,29 @@ class MainViewModel(app: Application) : AndroidViewModel(app) {
 
     private val database = AppDB.getInstance(app)
 
-    val notesList = database?.noteDao()?.getAll()
+    val workoutsList = database?.workOutDao()?.getAll()
 
     fun addSampleData (){
         viewModelScope.launch {
             withContext(Dispatchers.IO){
-                val sampleNotes = SampleDataProvider.getNotes()
-                database?.noteDao()?.insertAll(sampleNotes)
+                val sampleworkouts = SampleDataProvider.getworkouts()
+                database?.workOutDao()?.insertAll(sampleworkouts)
             }
         }
     }
 
-    fun deleteNotes(selectedWorkOuts: List<WorkOutEntity>) {
+    fun deleteworkouts(selectedWorkOuts: List<WorkOutEntity>) {
         viewModelScope.launch {
             withContext(Dispatchers.IO){
-                database?.noteDao()?.deleteWorkOut(selectedWorkOuts)
+                database?.workOutDao()?.deleteWorkOut(selectedWorkOuts)
             }
         }
     }
 
-    fun deleteAllNotes() {
+    fun deleteAllworkouts() {
         viewModelScope.launch {
             withContext(Dispatchers.IO){
-                database?.noteDao()?.deleteAllWorkOuts()
+                database?.workOutDao()?.deleteAllWorkOuts()
             }
         }
     }

@@ -20,7 +20,7 @@
         android:label="editor_fragment"
         tools:layout="@layout/editor_fragment" >
         <argument
-            android:name="noteId"
+            android:name="workOutId"
             app:argType="integer"
             android:defaultValue="0" />
     </fragment>

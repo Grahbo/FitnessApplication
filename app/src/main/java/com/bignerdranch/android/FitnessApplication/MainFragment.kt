@@ -44,20 +44,20 @@ class MainFragment : Fragment(),
             addItemDecoration(divider)
         }
 
-        viewModel.notesList?.observe(viewLifecycleOwner, Observer {
+        viewModel.workoutsList?.observe(viewLifecycleOwner, Observer {
             Log.i("noteLogging", it.toString())
             adapter = WorkOutListAdapter(it, this@MainFragment)
             binding.recyclerView.adapter = adapter
             binding.recyclerView.layoutManager = LinearLayoutManager(activity)
 
-            val selectedNotes =
+            val selectedworkouts =
                 savedInstanceState?.getParcelableArrayList<WorkOutEntity>(SELECTED_FITNESS_KEY)
-            adapter.selectedNotes.addAll(selectedNotes ?: emptyList())
+            adapter.selectedworkouts.addAll(selectedworkouts ?: emptyList())
 
         })
 
         binding.floatingActionButton.setOnClickListener {
-            editNote(NEW_WORKOUT_ID)
+            editWorkOut(NEW_WORKOUT_ID)
         }
 
         return binding.root
@@ -65,7 +65,7 @@ class MainFragment : Fragment(),
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
         val menuId =
-            if (this::adapter.isInitialized && adapter.selectedNotes.isNotEmpty()){
+            if (this::adapter.isInitialized && adapter.selectedworkouts.isNotEmpty()){
                 R.menu.menu_main_selected_items
             }else {
                 R.menu.menu_main
@@ -77,21 +77,21 @@ class MainFragment : Fragment(),
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         return when (item.itemId){
             R.id.action_sample_data -> addSampleData()
-            R.id.action_delete -> deleteSelectedNotes()
-            R.id.action_delete_all_data -> deleteAllNotes()
+            R.id.action_delete -> deleteSelectedworkouts()
+            R.id.action_delete_all_data -> deleteAllworkouts()
             else -> super.onOptionsItemSelected(item)
         }
     }
 
-    private fun deleteAllNotes(): Boolean {
-        viewModel.deleteAllNotes()
+    private fun deleteAllworkouts(): Boolean {
+        viewModel.deleteAllworkouts()
         return true
     }
 
-    private fun deleteSelectedNotes(): Boolean {
-        viewModel.deleteNotes(adapter.selectedNotes)
+    private fun deleteSelectedworkouts(): Boolean {
+        viewModel.deleteworkouts(adapter.selectedworkouts)
         Handler(Looper.getMainLooper()).postDelayed({
-            adapter.selectedNotes.clear()
+            adapter.selectedworkouts.clear()
             requireActivity().invalidateOptionsMenu()
         }, 100)
         return true
@@ -102,9 +102,9 @@ class MainFragment : Fragment(),
         return true
     }
 
-    override fun editNote(noteId: Int) {
-        Log.i(TAG, "onItemClick: received note id $noteId")
-        val action = MainFragmentDirections.actionEditNote(noteId)
+    override fun editWorkOut(workOutId: Int) {
+        Log.i(TAG, "onItemClick: received note id $workOutId")
+        val action = MainFragmentDirections.actionEditNote(workOutId)
         findNavController().navigate(action)
     }
 
@@ -116,7 +116,7 @@ class MainFragment : Fragment(),
         if (this::adapter.isInitialized){
             outState.putParcelableArrayList(
                 SELECTED_FITNESS_KEY,
-            adapter.selectedNotes)
+            adapter.selectedworkouts)
         }
         super.onSaveInstanceState(outState)
     }

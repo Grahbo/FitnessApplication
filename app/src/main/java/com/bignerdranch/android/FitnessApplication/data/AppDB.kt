@@ -7,7 +7,7 @@ import androidx.room.*
 @TypeConverters(DateConvertor::class)
 abstract class AppDB: RoomDatabase() {
     
-    abstract fun  noteDao(): WorkOutDao?
+    abstract fun  workOutDao(): WorkOutDao?
 
     companion object{
         private var INSTANCE: AppDB? = null
