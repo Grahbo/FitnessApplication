@@ -1,12 +1,13 @@
-package com.bignerdranch.android.FitnessApplication
+package com.bignerdranch.android.plainolnotes
 
 import androidx.room.Room
+import androidx.test.espresso.Root
 import androidx.test.platform.app.InstrumentationRegistry
 import androidx.test.ext.junit.runners.AndroidJUnit4
-import com.bignerdranch.android.FitnessApplication.data.AppDataBase
-import com.bignerdranch.android.FitnessApplication.data.NoteDao
-import com.bignerdranch.android.FitnessApplication.data.NoteEntity
-import com.bignerdranch.android.FitnessApplication.data.SampleDataProvider
+import com.bignerdranch.android.plainolnotes.data.AppDataBase
+import com.bignerdranch.android.plainolnotes.data.NoteDao
+import com.bignerdranch.android.plainolnotes.data.NoteEntity
+import com.bignerdranch.android.plainolnotes.data.SampleDataProvider
 import org.junit.After
 
 import org.junit.Test

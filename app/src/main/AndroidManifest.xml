@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="FitnessApplication">
+    package="com.bignerdranch.android.plainolnotes">
 
     <application
         android:allowBackup="true"
@@ -10,7 +10,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.PlainOlNotes">
         <activity
-            android:name="com.bignerdranch.android.FitnessApplication.MainActivity"
+            android:name=".MainActivity"
             android:exported="true"
             android:label="@string/notes">
             <intent-filter>
