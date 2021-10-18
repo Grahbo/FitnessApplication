@@ -3,26 +3,25 @@ package com.bignerdranch.android.FitnessApplication
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.bignerdranch.android.FitnessApplication.data.AppDataBase
-import com.bignerdranch.android.FitnessApplication.data.NoteEntity
+import com.bignerdranch.android.FitnessApplication.data.AppDB
+import com.bignerdranch.android.FitnessApplication.data.WorkOutEntity
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 
 class EditorViewModel(app: Application) : AndroidViewModel(app) {
-    private val database = AppDataBase.getInstance(app)
-    val currentNote = MutableLiveData<NoteEntity>()
+    private val database = AppDB.getInstance(app)
+    val currentNote = MutableLiveData<WorkOutEntity>()
 
     fun getNoteById(noteId: Int){
         viewModelScope.launch {
             withContext(Dispatchers.IO){
                 val note =
-                    if (noteId != NEW_NOTE_ID){
-                        database?.noteDao()?.getNoteById(noteId)
+                    if (noteId != NEW_WORKOUT_ID){
+                        database?.noteDao()?.getWorkOutById(noteId)
                     }else{
-                        NoteEntity()
+                        WorkOutEntity()
                     }
                 currentNote.postValue(note!!)
             }
@@ -32,14 +31,14 @@ class EditorViewModel(app: Application) : AndroidViewModel(app) {
     fun updateNote() {
         currentNote.value?.let{
             it.text = it.text.trim()
-            if(it.id == NEW_NOTE_ID && it.text.isEmpty()){
+            if(it.id == NEW_WORKOUT_ID && it.text.isEmpty()){
                 return
             }
 
             viewModelScope.launch {
                 withContext(Dispatchers.IO){
                     if(it.text.isEmpty()){
-                        database?.noteDao()?.deleteNote(it)
+                        database?.noteDao()?.deleteWorkOut(it)
                     }else{
                         database?.noteDao()?.insertNote(it)
                     }

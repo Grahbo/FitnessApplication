@@ -12,7 +12,7 @@
         <activity
             android:name="com.bignerdranch.android.FitnessApplication.MainActivity"
             android:exported="true"
-            android:label="@string/notes">
+            android:label="@string/workout">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

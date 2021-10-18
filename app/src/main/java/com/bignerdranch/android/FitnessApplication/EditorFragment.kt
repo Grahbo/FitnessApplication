@@ -39,8 +39,8 @@ class EditorFragment : Fragment() {
         setHasOptionsMenu(true)
 
         requireActivity().title =
-            if(args.noteId == NEW_NOTE_ID) {
-                getString(R.string.new_note)
+            if(args.noteId == NEW_WORKOUT_ID) {
+                getString(R.string.new_workout)
             }else{
                 getString(R.string.edit_note)
             }
@@ -59,7 +59,7 @@ class EditorFragment : Fragment() {
         })
 
         viewModel.currentNote.observe(viewLifecycleOwner, Observer {
-            val savedString = savedInstanceState?.getString(NOTE_TEXT_KEY)
+            val savedString = savedInstanceState?.getString(FITNESS_TEXT_KEY)
             val cursorPosition = savedInstanceState?.getInt(CURSOR_POSITION_KEY) ?: 0
             binding.editor.setText(savedString?: it.text)
             binding.editor.setSelection(cursorPosition)
@@ -91,7 +91,7 @@ class EditorFragment : Fragment() {
 
     override fun onSaveInstanceState(outState: Bundle) {
         with(binding.editor){
-            outState.putString(NOTE_TEXT_KEY, text.toString())
+            outState.putString(FITNESS_TEXT_KEY, text.toString())
             outState.putInt(CURSOR_POSITION_KEY, selectionStart)
         }
         super.onSaveInstanceState(outState)

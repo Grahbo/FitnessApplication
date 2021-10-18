@@ -4,30 +4,29 @@ import androidx.lifecycle.LiveData
 import androidx.room.*
 
 @Dao
-interface NoteDao {
+interface WorkOutDao {
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    fun insertNote(note: NoteEntity)
+    fun insertNote(workOut: WorkOutEntity)
 
     @Insert(onConflict = OnConflictStrategy.IGNORE)
-    fun insertAll(notes: List<NoteEntity>)
+    fun insertAll(workOuts: List<WorkOutEntity>)
 
     @Query("SELECT * FROM notes ORDER BY date ASC")
-    fun getAll(): LiveData<List<NoteEntity>>
+    fun getAll(): LiveData<List<WorkOutEntity>>
 
     @Query("SELECT * FROM notes WHERE id = :id")
-    fun getNoteById(id: Int): NoteEntity?
-
+    fun getWorkOutById(id: Int): WorkOutEntity?
 
     @Query("SELECT COUNT(*) from notes")
     fun getCount(): Int
 
     @Delete
-    fun deleteNotes(selectedNotes: List<NoteEntity>): Int
+    fun deleteWorkOut(selectedWorkOuts: List<WorkOutEntity>): Int
 
     @Query("DELETE from notes")
-    fun deleteAllNotes(): Int
+    fun deleteAllWorkOuts(): Int
 
     @Delete
-    fun deleteNote(it: NoteEntity)
+    fun deleteWorkOut(it: WorkOutEntity)
 }

@@ -1,7 +1,7 @@
 package com.bignerdranch.android.FitnessApplication
 
-const val NEW_NOTE_ID = 0
-const val TAG = "noteLogging"
-const val NOTE_TEXT_KEY = "noteTextKey"
+const val NEW_WORKOUT_ID = 0
+const val TAG = "fitnessLogging"
+const val FITNESS_TEXT_KEY = "fitnessTextKey"
 const val CURSOR_POSITION_KEY = "cursorPositionKey"
-const val SELECTED_NOTES_KEY = "selectedNotesKey"
+const val SELECTED_FITNESS_KEY = "selectedFitnessKey"

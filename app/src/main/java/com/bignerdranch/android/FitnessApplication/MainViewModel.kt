@@ -2,11 +2,9 @@ package com.bignerdranch.android.FitnessApplication
 
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel
-import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.bignerdranch.android.FitnessApplication.data.AppDataBase
-import com.bignerdranch.android.FitnessApplication.data.NoteEntity
+import com.bignerdranch.android.FitnessApplication.data.AppDB
+import com.bignerdranch.android.FitnessApplication.data.WorkOutEntity
 import com.bignerdranch.android.FitnessApplication.data.SampleDataProvider
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -14,7 +12,7 @@ import kotlinx.coroutines.withContext
 
 class MainViewModel(app: Application) : AndroidViewModel(app) {
 
-    private val database = AppDataBase.getInstance(app)
+    private val database = AppDB.getInstance(app)
 
     val notesList = database?.noteDao()?.getAll()
 
@@ -27,10 +25,10 @@ class MainViewModel(app: Application) : AndroidViewModel(app) {
         }
     }
 
-    fun deleteNotes(selectedNotes: List<NoteEntity>) {
+    fun deleteNotes(selectedWorkOuts: List<WorkOutEntity>) {
         viewModelScope.launch {
             withContext(Dispatchers.IO){
-                database?.noteDao()?.deleteNotes(selectedNotes)
+                database?.noteDao()?.deleteWorkOut(selectedWorkOuts)
             }
         }
     }
@@ -38,7 +36,7 @@ class MainViewModel(app: Application) : AndroidViewModel(app) {
     fun deleteAllNotes() {
         viewModelScope.launch {
             withContext(Dispatchers.IO){
-                database?.noteDao()?.deleteAllNotes()
+                database?.noteDao()?.deleteAllWorkOuts()
             }
         }
     }

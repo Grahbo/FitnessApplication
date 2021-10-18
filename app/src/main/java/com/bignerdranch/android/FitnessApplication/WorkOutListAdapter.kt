@@ -4,16 +4,16 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.bignerdranch.android.FitnessApplication.data.NoteEntity
+import com.bignerdranch.android.FitnessApplication.data.WorkOutEntity
 import com.bignerdranch.android.FitnessApplication.databinding.ListItemBinding
 
-class NotesListAdapter(private val notesList: List<NoteEntity>,
-                       private val listener: ListItemListener
+class WorkOutListAdapter(private val notesList: List<WorkOutEntity>,
+                         private val listener: ListItemListener
 ) :
 
-    RecyclerView.Adapter<NotesListAdapter.ViewHolder>() {
+    RecyclerView.Adapter<WorkOutListAdapter.ViewHolder>() {
 
-    val selectedNotes = arrayListOf<NoteEntity>()
+    val selectedNotes = arrayListOf<WorkOutEntity>()
 
     inner class ViewHolder(itemView: View) :
         RecyclerView.ViewHolder(itemView) {

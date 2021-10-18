@@ -12,16 +12,15 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.bignerdranch.android.FitnessApplication.R
-import com.bignerdranch.android.FitnessApplication.data.NoteEntity
+import com.bignerdranch.android.FitnessApplication.data.WorkOutEntity
 import com.bignerdranch.android.FitnessApplication.databinding.MainFragmentBinding
 
 class MainFragment : Fragment(),
-    NotesListAdapter.ListItemListener {
+    WorkOutListAdapter.ListItemListener {
 
     private lateinit var viewModel: MainViewModel
     private lateinit var binding: MainFragmentBinding
-    private lateinit var adapter: NotesListAdapter
+    private lateinit var adapter: WorkOutListAdapter
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -47,18 +46,18 @@ class MainFragment : Fragment(),
 
         viewModel.notesList?.observe(viewLifecycleOwner, Observer {
             Log.i("noteLogging", it.toString())
-            adapter = NotesListAdapter(it, this@MainFragment)
+            adapter = WorkOutListAdapter(it, this@MainFragment)
             binding.recyclerView.adapter = adapter
             binding.recyclerView.layoutManager = LinearLayoutManager(activity)
 
             val selectedNotes =
-                savedInstanceState?.getParcelableArrayList<NoteEntity>(SELECTED_NOTES_KEY)
+                savedInstanceState?.getParcelableArrayList<WorkOutEntity>(SELECTED_FITNESS_KEY)
             adapter.selectedNotes.addAll(selectedNotes ?: emptyList())
 
         })
 
         binding.floatingActionButton.setOnClickListener {
-            editNote(NEW_NOTE_ID)
+            editNote(NEW_WORKOUT_ID)
         }
 
         return binding.root
@@ -116,7 +115,7 @@ class MainFragment : Fragment(),
     override fun onSaveInstanceState(outState: Bundle) {
         if (this::adapter.isInitialized){
             outState.putParcelableArrayList(
-                SELECTED_NOTES_KEY,
+                SELECTED_FITNESS_KEY,
             adapter.selectedNotes)
         }
         super.onSaveInstanceState(outState)
