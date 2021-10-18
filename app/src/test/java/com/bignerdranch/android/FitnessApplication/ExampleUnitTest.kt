@@ -1,4 +1,4 @@
-package com.bignerdranch.android.plainolnotes
+package com.bignerdranch.android.FitnessApplication
 
 import org.junit.Test
 
