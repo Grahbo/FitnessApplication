@@ -42,7 +42,7 @@ class EditorFragment : Fragment() {
             if(args.workOutId == NEW_WORKOUT_ID) {
                 getString(R.string.new_workout)
             }else{
-                getString(R.string.edit_note)
+                getString(R.string.edit_workout)
             }
 
         viewModel = ViewModelProvider(this).get(EditorViewModel::class.java)
