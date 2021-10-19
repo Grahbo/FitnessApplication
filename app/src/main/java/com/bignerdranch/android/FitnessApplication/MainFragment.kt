@@ -76,7 +76,6 @@ class MainFragment : Fragment(),
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         return when (item.itemId){
-            R.id.action_sample_data -> addSampleData()
             R.id.action_delete -> deleteSelectedworkouts()
             R.id.action_delete_all_data -> deleteAllworkouts()
             else -> super.onOptionsItemSelected(item)
@@ -94,11 +93,6 @@ class MainFragment : Fragment(),
             adapter.selectedworkouts.clear()
             requireActivity().invalidateOptionsMenu()
         }, 100)
-        return true
-    }
-
-    private fun addSampleData(): Boolean {
-        viewModel.addSampleData()
         return true
     }
 

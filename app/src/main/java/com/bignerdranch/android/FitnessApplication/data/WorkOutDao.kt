@@ -12,19 +12,19 @@ interface WorkOutDao {
     @Insert(onConflict = OnConflictStrategy.IGNORE)
     fun insertAll(workOuts: List<WorkOutEntity>)
 
-    @Query("SELECT * FROM notes ORDER BY date ASC")
+    @Query("SELECT * FROM WorkOutEntity ORDER BY date ASC")
     fun getAll(): LiveData<List<WorkOutEntity>>
 
-    @Query("SELECT * FROM notes WHERE id = :id")
+    @Query("SELECT * FROM WorkOutEntity WHERE id = :id")
     fun getWorkOutById(id: Int): WorkOutEntity?
 
-    @Query("SELECT COUNT(*) from notes")
+    @Query("SELECT COUNT(*) from WorkOutEntity")
     fun getCount(): Int
 
     @Delete
     fun deleteWorkOut(selectedWorkOuts: List<WorkOutEntity>): Int
 
-    @Query("DELETE from notes")
+    @Query("DELETE from WorkOutEntity")
     fun deleteAllWorkOuts(): Int
 
     @Delete

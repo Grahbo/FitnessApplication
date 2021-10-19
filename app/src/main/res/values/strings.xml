@@ -2,6 +2,7 @@
     <string name="app_name">FitnessApplication</string>
     <string name="workout">WorkOut</string>
     <string name="enter_workout">Enter workout</string>
+    <string name="enter_location">Enter location</string>
     <string name="add_sample_data">Add Sample Data</string>
     <string name="delete">Delete</string>
     <string name="delete_all_data">Delete all data</string>

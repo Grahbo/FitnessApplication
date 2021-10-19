@@ -8,8 +8,8 @@ import kotlinx.android.parcel.Parcelize
 import java.util.*
 
 @Parcelize
-
-@Entity(tableName = "notes")
+//@Entity(tableName = "workouts")
+@Entity
 data class WorkOutEntity(
     @PrimaryKey(autoGenerate = true)
     var id: Int,
@@ -19,3 +19,4 @@ data class WorkOutEntity(
     constructor() : this(NEW_WORKOUT_ID, Date(), "")
     constructor(date: Date, text: String) : this(NEW_WORKOUT_ID, date, text)
 }
+

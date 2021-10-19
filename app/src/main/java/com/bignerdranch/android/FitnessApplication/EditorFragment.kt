@@ -48,7 +48,8 @@ class EditorFragment : Fragment() {
         viewModel = ViewModelProvider(this).get(EditorViewModel::class.java)
 
         binding = EditorFragmentBinding.inflate(inflater, container, false)
-        binding.editor.setText("")
+        binding.editorworkout.setText("")
+        binding.editorlocation.setText("")
 
         requireActivity().onBackPressedDispatcher.addCallback(
             viewLifecycleOwner,
@@ -61,8 +62,10 @@ class EditorFragment : Fragment() {
         viewModel.currentWorkOut.observe(viewLifecycleOwner, Observer {
             val savedString = savedInstanceState?.getString(FITNESS_TEXT_KEY)
             val cursorPosition = savedInstanceState?.getInt(CURSOR_POSITION_KEY) ?: 0
-            binding.editor.setText(savedString?: it.text)
-            binding.editor.setSelection(cursorPosition)
+            binding.editorworkout.setText(savedString?: it.text)
+            binding.editorworkout.setSelection(cursorPosition)
+            binding.editorlocation.setText(savedString?: it.text)
+            binding.editorlocation.setSelection(cursorPosition)
         })
         viewModel.getWorkOutById(args.workOutId)
 
@@ -82,7 +85,7 @@ class EditorFragment : Fragment() {
             .getSystemService(Activity.INPUT_METHOD_SERVICE)as InputMethodManager
         imm.hideSoftInputFromWindow(binding.root.windowToken, 0)
 
-        viewModel.currentWorkOut.value?.text = binding.editor.text.toString()
+        viewModel.currentWorkOut.value?.text = binding.editorworkout.text.toString()
         viewModel.updateNote()
 
         findNavController().navigateUp()
@@ -90,7 +93,7 @@ class EditorFragment : Fragment() {
     }
 
     override fun onSaveInstanceState(outState: Bundle) {
-        with(binding.editor){
+        with(binding.editorworkout){
             outState.putString(FITNESS_TEXT_KEY, text.toString())
             outState.putInt(CURSOR_POSITION_KEY, selectionStart)
         }

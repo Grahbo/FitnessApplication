@@ -31,7 +31,8 @@ class WorkOutListAdapter(private val workoutsList: List<WorkOutEntity>,
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val workout = workoutsList[position]
         with(holder.binding) {
-            workOutText.text = workout.text
+            titleText.text = workout.text
+            dateText.text = workout.date.toString()
             root.setOnClickListener{
                 listener.editWorkOut(workout.id)
             }

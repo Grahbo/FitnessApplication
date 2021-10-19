@@ -6,7 +6,6 @@ import androidx.test.ext.junit.runners.AndroidJUnit4
 import com.bignerdranch.android.FitnessApplication.data.AppDB
 import com.bignerdranch.android.FitnessApplication.data.WorkOutDao
 import com.bignerdranch.android.FitnessApplication.data.WorkOutEntity
-import com.bignerdranch.android.FitnessApplication.data.SampleDataProvider
 import org.junit.After
 
 import org.junit.Test
@@ -29,13 +28,6 @@ class DatabaseTest {
             .build()
 
         dao = database.workOutDao()!!
-    }
-
-    @Test
-    fun createworkouts() {
-        dao.insertAll(SampleDataProvider.getworkouts())
-        val count = dao.getCount()
-        assertEquals(count, SampleDataProvider.getworkouts().size)
     }
 
     @Test
