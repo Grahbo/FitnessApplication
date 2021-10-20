@@ -14,9 +14,10 @@ data class WorkOutEntity(
     @PrimaryKey(autoGenerate = true)
     var id: Int,
     var date: Date,
-    var text: String
+    var text: String,
+    var location: String
 ) : Parcelable {
-    constructor() : this(NEW_WORKOUT_ID, Date(), "")
-    constructor(date: Date, text: String) : this(NEW_WORKOUT_ID, date, text)
+    constructor() : this(NEW_WORKOUT_ID, Date(), "", "")
+    constructor(date: Date, text: String, location: String) : this(NEW_WORKOUT_ID, date, text, location)
 }
 

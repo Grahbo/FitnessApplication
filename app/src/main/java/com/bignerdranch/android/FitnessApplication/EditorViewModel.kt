@@ -31,6 +31,7 @@ class EditorViewModel(app: Application) : AndroidViewModel(app) {
     fun updateNote() {
         currentWorkOut.value?.let{
             it.text = it.text.trim()
+            it.location = it.location.trim()
             if(it.id == NEW_WORKOUT_ID && it.text.isEmpty()){
                 return
             }

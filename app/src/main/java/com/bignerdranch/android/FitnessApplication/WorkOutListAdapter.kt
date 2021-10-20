@@ -6,6 +6,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bignerdranch.android.FitnessApplication.data.WorkOutEntity
 import com.bignerdranch.android.FitnessApplication.databinding.ListItemBinding
+import java.time.format.DateTimeFormatter
 
 class WorkOutListAdapter(private val workoutsList: List<WorkOutEntity>,
                          private val listener: ListItemListener
@@ -33,6 +34,7 @@ class WorkOutListAdapter(private val workoutsList: List<WorkOutEntity>,
         with(holder.binding) {
             titleText.text = workout.text
             dateText.text = workout.date.toString()
+            placeText.text = workout.location
             root.setOnClickListener{
                 listener.editWorkOut(workout.id)
             }

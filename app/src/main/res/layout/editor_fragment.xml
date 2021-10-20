@@ -17,9 +17,10 @@
             android:layout_margin="16dp"
             android:hint="@string/enter_workout"
             android:inputType="textCapSentences|textMultiLine"
+            android:minHeight="48dp"
             android:textAppearance="@style/TextAppearance.AppCompat.Medium"
             tools:ignore="Autofill"
-            tools:text="Hello" />
+            tools:text="Workout" />
 
         <EditText
             android:id="@+id/editorlocation"
@@ -28,9 +29,30 @@
             android:layout_margin="16dp"
             android:hint="@string/enter_location"
             android:inputType="textCapSentences|textMultiLine"
+            android:minHeight="48dp"
             android:textAppearance="@style/TextAppearance.AppCompat.Medium"
             tools:ignore="Autofill"
-            tools:text="Hello" />
+            tools:text="Location" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:orientation="horizontal">
+
+            <CheckBox
+                android:id="@+id/solo"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:text="@string/solo_check" />
+
+            <CheckBox
+                android:id="@+id/group"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/group_check" />
+        </LinearLayout>
 
 
     </LinearLayout>

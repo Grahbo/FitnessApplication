@@ -8,4 +8,6 @@
     <string name="delete_all_data">Delete all data</string>
     <string name="new_workout">New workout</string>
     <string name="edit_workout">Edit workout</string>
+    <string name="solo_check">Solo Workout</string>
+    <string name="group_check">Group Workout</string>
 </resources>

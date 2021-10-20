@@ -114,7 +114,4 @@ class MainFragment : Fragment(),
         }
         super.onSaveInstanceState(outState)
     }
-
-
-
 }

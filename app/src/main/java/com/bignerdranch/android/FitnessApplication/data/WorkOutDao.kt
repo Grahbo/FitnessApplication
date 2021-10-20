@@ -28,5 +28,5 @@ interface WorkOutDao {
     fun deleteAllWorkOuts(): Int
 
     @Delete
-    fun deleteWorkOut(it: WorkOutEntity)
+    fun deleteWorkOut(workOut: WorkOutEntity)
 }

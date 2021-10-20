@@ -64,7 +64,7 @@ class EditorFragment : Fragment() {
             val cursorPosition = savedInstanceState?.getInt(CURSOR_POSITION_KEY) ?: 0
             binding.editorworkout.setText(savedString?: it.text)
             binding.editorworkout.setSelection(cursorPosition)
-            binding.editorlocation.setText(savedString?: it.text)
+            binding.editorlocation.setText(savedString?: it.location)
             binding.editorlocation.setSelection(cursorPosition)
         })
         viewModel.getWorkOutById(args.workOutId)
@@ -81,11 +81,13 @@ class EditorFragment : Fragment() {
 
     private fun saveAndReturn(): Boolean {
 
+        //hide keyboard after edit and fragment has closed
         val imm = requireActivity()
             .getSystemService(Activity.INPUT_METHOD_SERVICE)as InputMethodManager
         imm.hideSoftInputFromWindow(binding.root.windowToken, 0)
 
         viewModel.currentWorkOut.value?.text = binding.editorworkout.text.toString()
+        viewModel.currentWorkOut.value?.location = binding.editorlocation.text.toString()
         viewModel.updateNote()
 
         findNavController().navigateUp()
