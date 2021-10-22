@@ -31,7 +31,7 @@ class EditorViewModel(app: Application) : AndroidViewModel(app) {
     fun updateNote() {
         currentWorkOut.value?.let{
             it.text = it.text.trim()
-            it.location = it.location.trim()
+            //it.location = it.location.trim()
             if(it.id == NEW_WORKOUT_ID && it.text.isEmpty()){
                 return
             }
@@ -41,7 +41,7 @@ class EditorViewModel(app: Application) : AndroidViewModel(app) {
                     if(it.text.isEmpty()){
                         database?.workOutDao()?.deleteWorkOut(it)
                     }else{
-                        database?.workOutDao()?.insertNote(it)
+                        database?.workOutDao()?.insertWorkout(it)
                     }
                 }
             }

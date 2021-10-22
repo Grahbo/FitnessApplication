@@ -34,25 +34,30 @@
             tools:ignore="Autofill"
             tools:text="Location" />
 
-        <LinearLayout
+        <RadioGroup
+            android:id="@+id/radioGroup"
             android:layout_width="match_parent"
-            android:layout_height="48dp"
+            android:layout_height="match_parent"
             android:orientation="horizontal">
 
-            <CheckBox
-                android:id="@+id/editorsolo"
+            <RadioButton
+                android:id="@+id/soloRadioButton"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginStart="50dp"
+                android:layout_weight="1"
+                android:checked="false"
+                android:text="@string/solo_check" />
+
+            <RadioButton
+                android:id="@+id/groupRadioButton"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:text="@string/solo_check" />
+                android:text="@string/group_check"
+                android:textAlignment="viewStart" />
 
-            <CheckBox
-                android:id="@+id/editorgroup"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="@string/group_check" />
-        </LinearLayout>
+        </RadioGroup>
 
 
     </LinearLayout>

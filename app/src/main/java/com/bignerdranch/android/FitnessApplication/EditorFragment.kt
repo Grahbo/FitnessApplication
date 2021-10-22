@@ -10,12 +10,15 @@ import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
 import android.view.inputmethod.InputMethodManager
+import android.widget.CheckBox
+import android.widget.RadioGroup
 import androidx.activity.OnBackPressedCallback
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.bignerdranch.android.FitnessApplication.databinding.EditorFragmentBinding
+import kotlinx.android.synthetic.main.editor_fragment.*
 
 class EditorFragment : Fragment() {
 
@@ -38,6 +41,7 @@ class EditorFragment : Fragment() {
         }
         setHasOptionsMenu(true)
 
+
         requireActivity().title =
             if(args.workOutId == NEW_WORKOUT_ID) {
                 getString(R.string.new_workout)
@@ -50,8 +54,7 @@ class EditorFragment : Fragment() {
         binding = EditorFragmentBinding.inflate(inflater, container, false)
         binding.editorworkout.setText("")
         binding.editorlocation.setText("")
-        binding.editorgroup.isChecked = false
-        binding.editorsolo.isChecked = false
+        binding.radioGroup.check(0)
 
         requireActivity().onBackPressedDispatcher.addCallback(
             viewLifecycleOwner,
@@ -61,17 +64,15 @@ class EditorFragment : Fragment() {
                 }
         })
 
+        //start observing the elements
         viewModel.currentWorkOut.observe(viewLifecycleOwner, Observer {
-            val savedString = savedInstanceState?.getString(FITNESS_TEXT_KEY)
-            val cursorPosition = savedInstanceState?.getInt(CURSOR_POSITION_KEY) ?: 0
-            val savedBool = savedInstanceState?.getBoolean(SELECTED_FITNESS_CHECK) ?: false
-            binding.editorworkout.setText(savedString?: it.text)
-            binding.editorworkout.setSelection(cursorPosition)
-            binding.editorlocation.setText(savedString?: it.location)
-            binding.editorlocation.setSelection(cursorPosition)
+            val savedWorkoutString = savedInstanceState?.getString(FITNESS_TEXT_KEY)
+            val savedLocationString = savedInstanceState?.getString(SELECTED_LOCATION_KEY)
+            val savedInt = savedInstanceState?.getInt(SELECTED_FITNESS_CHECK)
+            binding.editorworkout.setText(savedWorkoutString?: it.text)
+            binding.editorlocation.setText(savedLocationString?: it.location)
+            binding.radioGroup.check(savedInt?: it.workoutsolo)
 
-            binding.editorsolo.isChecked = savedBool ?: it.workoutsolo
-            binding.editorgroup.isChecked = savedBool ?: it.workoutcompany
         })
         viewModel.getWorkOutById(args.workOutId)
 
@@ -92,18 +93,23 @@ class EditorFragment : Fragment() {
             .getSystemService(Activity.INPUT_METHOD_SERVICE)as InputMethodManager
         imm.hideSoftInputFromWindow(binding.root.windowToken, 0)
 
+        //load the database information
         viewModel.currentWorkOut.value?.text = binding.editorworkout.text.toString()
         viewModel.currentWorkOut.value?.location = binding.editorlocation.text.toString()
+        viewModel.currentWorkOut.value?.workoutsolo = binding.radioGroup.checkedRadioButtonId
         viewModel.updateNote()
 
         findNavController().navigateUp()
         return true
     }
 
+    //the following method deals with rotating the device
     override fun onSaveInstanceState(outState: Bundle) {
         with(binding.editorworkout){
-            outState.putString(FITNESS_TEXT_KEY, text.toString())
-            outState.putInt(CURSOR_POSITION_KEY, selectionStart)
+            outState.putString(FITNESS_TEXT_KEY, editorworkout.text.toString())
+            outState.putString(SELECTED_LOCATION_KEY, editorlocation.text.toString())
+            //outState.putInt(CURSOR_POSITION_KEY, selectionStart)
+            outState.putInt(SELECTED_FITNESS_CHECK, radioGroup.checkedRadioButtonId)
         }
         super.onSaveInstanceState(outState)
     }

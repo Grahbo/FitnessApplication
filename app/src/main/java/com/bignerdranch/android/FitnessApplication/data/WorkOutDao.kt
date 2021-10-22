@@ -7,7 +7,7 @@ import androidx.room.*
 interface WorkOutDao {
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    fun insertNote(workOut: WorkOutEntity)
+    fun insertWorkout(workOut: WorkOutEntity)
 
     @Insert(onConflict = OnConflictStrategy.IGNORE)
     fun insertAll(workOuts: List<WorkOutEntity>)
