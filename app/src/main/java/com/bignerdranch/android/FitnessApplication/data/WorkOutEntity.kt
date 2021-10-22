@@ -16,12 +16,13 @@ import java.time.format.DateTimeFormatter
 data class WorkOutEntity(
     @PrimaryKey(autoGenerate = true)
     var id: Int,
-    var date: Date,
-    var text: String,
+    var date: String,
+    var workout: String,
     var location: String,
     var workoutsolo: Int
 ) : Parcelable {
-    constructor() : this(NEW_WORKOUT_ID, Date(), "", "", 0)
-    constructor(date: Date, text: String, location: String, workoutsolo: Int)
+    constructor() : this(NEW_WORKOUT_ID, "", "", "", 0)
+
+    constructor(date: String, text: String, location: String, workoutsolo: Int)
                 : this(NEW_WORKOUT_ID, date, text, location, workoutsolo)
 }

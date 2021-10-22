@@ -10,4 +10,10 @@
     <string name="edit_workout">Edit workout</string>
     <string name="solo_check">Solo Workout</string>
     <string name="group_check">Group Workout</string>
+    <string name="select_date">Select Date</string>
+    <string name="start_time">Start Time</string>
+    <string name="end_time">End Time</string>
+    <string name="exersize_start_time">Exersize Start Time</string>
+    <string name="exersize_end_time">Exersize End Time</string>
+    <string name="workout_date">Workout Date</string>
 </resources>

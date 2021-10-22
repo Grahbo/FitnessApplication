@@ -33,8 +33,8 @@ class DatabaseTest {
     @Test
     fun insertNote(){
         val note = WorkOutEntity()
-        note.text = "some text"
-        dao.insertNote(note)
+        note.workout = "some text"
+        dao.insertWorkout(note)
         val savedNote = dao.getWorkOutById(1)
 
         assertEquals(savedNote?.id ?: 0, 1)
