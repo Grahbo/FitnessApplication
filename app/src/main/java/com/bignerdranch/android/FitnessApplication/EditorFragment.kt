@@ -50,6 +50,8 @@ class EditorFragment : Fragment() {
         binding = EditorFragmentBinding.inflate(inflater, container, false)
         binding.editorworkout.setText("")
         binding.editorlocation.setText("")
+        binding.editorgroup.isChecked = false
+        binding.editorsolo.isChecked = false
 
         requireActivity().onBackPressedDispatcher.addCallback(
             viewLifecycleOwner,
@@ -62,10 +64,14 @@ class EditorFragment : Fragment() {
         viewModel.currentWorkOut.observe(viewLifecycleOwner, Observer {
             val savedString = savedInstanceState?.getString(FITNESS_TEXT_KEY)
             val cursorPosition = savedInstanceState?.getInt(CURSOR_POSITION_KEY) ?: 0
+            val savedBool = savedInstanceState?.getBoolean(SELECTED_FITNESS_CHECK) ?: false
             binding.editorworkout.setText(savedString?: it.text)
             binding.editorworkout.setSelection(cursorPosition)
             binding.editorlocation.setText(savedString?: it.location)
             binding.editorlocation.setSelection(cursorPosition)
+
+            binding.editorsolo.isChecked = savedBool ?: it.workoutsolo
+            binding.editorgroup.isChecked = savedBool ?: it.workoutcompany
         })
         viewModel.getWorkOutById(args.workOutId)
 

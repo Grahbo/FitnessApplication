@@ -33,8 +33,9 @@ class WorkOutListAdapter(private val workoutsList: List<WorkOutEntity>,
         val workout = workoutsList[position]
         with(holder.binding) {
             titleText.text = workout.text
-            dateText.text = workout.date.toString()
+            dateText.text = workout.date.toLocaleString()
             placeText.text = workout.location
+
             root.setOnClickListener{
                 listener.editWorkOut(workout.id)
             }

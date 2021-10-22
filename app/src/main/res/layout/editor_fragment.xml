@@ -40,14 +40,14 @@
             android:orientation="horizontal">
 
             <CheckBox
-                android:id="@+id/solo"
+                android:id="@+id/editorsolo"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:text="@string/solo_check" />
 
             <CheckBox
-                android:id="@+id/group"
+                android:id="@+id/editorgroup"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
