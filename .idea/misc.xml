@@ -4,12 +4,21 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="..\:/Users/gb10610/AndroidStudioProjects/FitnessApplication/app/src/main/res/layout/editor_fragment.xml" value="0.20520833333333333" />
+        <entry key="..\:/Users/graha/AndroidStudioProjects/FitnessApp/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.3671875" />
+        <entry key="..\:/Users/graha/AndroidStudioProjects/FitnessApp/app/src/main/res/drawable/ic_add.xml" value="0.24322916666666666" />
+        <entry key="..\:/Users/graha/AndroidStudioProjects/FitnessApp/app/src/main/res/drawable/ic_check.xml" value="0.24322916666666666" />
+        <entry key="..\:/Users/graha/AndroidStudioProjects/FitnessApp/app/src/main/res/drawable/ic_delete.xml" value="0.24322916666666666" />
+        <entry key="..\:/Users/graha/AndroidStudioProjects/FitnessApp/app/src/main/res/drawable/ic_note.xml" value="0.3671875" />
         <entry key="..\:/Users/graha/AndroidStudioProjects/FitnessApp/app/src/main/res/layout/activity_main.xml" value="0.5" />
         <entry key="..\:/Users/graha/AndroidStudioProjects/FitnessApp/app/src/main/res/layout/editor_fragment.xml" value="0.25" />
         <entry key="..\:/Users/graha/AndroidStudioProjects/FitnessApp/app/src/main/res/layout/list_item.xml" value="0.33" />
         <entry key="..\:/Users/graha/AndroidStudioProjects/FitnessApp/app/src/main/res/layout/main_fragment.xml" value="0.25" />
         <entry key="..\:/Users/graha/AndroidStudioProjects/FitnessApp/app/src/main/res/menu/menu_main.xml" value="0.33" />
-        <entry key="..\:/Users/graha/AndroidStudioProjects/FitnessApp/app/src/main/res/menu/menu_main_selected_items.xml" value="0.15925925925925927" />
+        <entry key="..\:/Users/graha/AndroidStudioProjects/FitnessApp/app/src/main/res/menu/menu_main_delete_warning.xml" value="0.20833333333333334" />
+        <entry key="..\:/Users/graha/AndroidStudioProjects/FitnessApp/app/src/main/res/menu/menu_main_selected_items.xml" value="0.33" />
+        <entry key="..\:/Users/graha/AndroidStudioProjects/FitnessApp/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.3671875" />
+        <entry key="..\:/Users/graha/AndroidStudioProjects/FitnessApp/app/src/main/res/mipmap-anydpi-v26/ic_launcher_hdpi.xml" value="0.24322916666666666" />
+        <entry key="..\:/Users/graha/AndroidStudioProjects/FitnessApp/app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml" value="0.24322916666666666" />
         <entry key="..\:/Users/graha/AndroidStudioProjects/PlainOlNotes/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.2109375" />
         <entry key="..\:/Users/graha/AndroidStudioProjects/PlainOlNotes/app/src/main/res/drawable/ic_add.xml" value="0.20833333333333334" />
         <entry key="..\:/Users/graha/AndroidStudioProjects/PlainOlNotes/app/src/main/res/layout/activity_main.xml" value="0.1707193515704154" />

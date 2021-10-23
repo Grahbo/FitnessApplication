@@ -64,7 +64,7 @@
                 android:minHeight="48dp"
                 android:layout_margin="16dp"
                 android:layout_weight="1"
-                android:text="@string/start_time" />
+                android:text="@string/start_time"/>
 
             <Button
                 android:id="@+id/end_time_button"
@@ -73,13 +73,13 @@
                 android:minHeight="48dp"
                 android:layout_margin="16dp"
                 android:layout_weight="1"
-                android:text="@string/end_time" />
+                android:text="@string/end_time"/>
 
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="0dp"
             android:layout_weight="1"
             android:orientation="horizontal">
 
@@ -89,10 +89,10 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:minHeight="48dp"
+                android:text="@string/exercise_start_time"
+                android:textAlignment="center"
                 android:textAppearance="@style/TextAppearance.AppCompat.Medium"
-                tools:ignore="Autofill"
-                android:text="@string/exersize_start_time"
-                android:textAlignment="center" />
+                tools:ignore="Autofill" />
 
             <TextView
                 android:id="@+id/end_time_text"
@@ -102,7 +102,7 @@
                 android:minHeight="48dp"
                 android:textAppearance="@style/TextAppearance.AppCompat.Medium"
                 tools:ignore="Autofill"
-                android:text="@string/exersize_end_time"
+                android:text="@string/exercise_end_time"
                 android:textAlignment="center" />
         </LinearLayout>
 

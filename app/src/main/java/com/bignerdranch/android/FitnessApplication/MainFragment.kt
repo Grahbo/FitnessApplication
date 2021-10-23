@@ -88,6 +88,8 @@ class MainFragment : Fragment(),
     }
 
     private fun deleteSelectedworkouts(): Boolean {
+
+
         viewModel.deleteworkouts(adapter.selectedworkouts)
         Handler(Looper.getMainLooper()).postDelayed({
             adapter.selectedworkouts.clear()

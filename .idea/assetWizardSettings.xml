@@ -67,6 +67,7 @@
                                           <PersistentState>
                                             <option name="values">
                                               <map>
+                                                <entry key="color" value="000000" />
                                                 <entry key="imagePath" value="C:\Users\graha\AppData\Local\Temp\ic_android_black_24dp.xml" />
                                               </map>
                                             </option>
@@ -79,8 +80,8 @@
                                             <option name="values">
                                               <map>
                                                 <entry key="color" value="000000" />
-                                                <entry key="imagePath" value="C:\Users\graha\AndroidStudioProjects\PlainOlNotes\Image Source\PlainOlNotes512x512.png" />
-                                                <entry key="scalingPercent" value="49" />
+                                                <entry key="imagePath" value="C:\Users\graha\AndroidStudioProjects\PlainOlNotes\Image Source\fitness-icon.png" />
+                                                <entry key="scalingPercent" value="53" />
                                               </map>
                                             </option>
                                           </PersistentState>

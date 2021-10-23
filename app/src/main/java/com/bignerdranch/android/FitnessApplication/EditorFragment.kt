@@ -14,6 +14,7 @@ import android.view.ViewGroup
 import android.view.inputmethod.InputMethodManager
 import android.widget.Button
 import android.widget.DatePicker
+import android.widget.Toast
 import androidx.activity.OnBackPressedCallback
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
@@ -76,12 +77,19 @@ class EditorFragment : Fragment() {
             val savedLocationString = savedInstanceState?.getString(SELECTED_LOCATION_KEY)
             val savedInt = savedInstanceState?.getInt(SELECTED_FITNESS_CHECK)
             val savedDate = savedInstanceState?.getString(SELECTED_DATE)
+            val savedStart = savedInstanceState?.getString(STARTTIME)
+            val savedEnd = savedInstanceState?.getString(ENDTIME)
             binding.editorworkout.setText(savedWorkoutString?: it.workout)
             binding.editorlocation.setText(savedLocationString?: it.location)
             binding.radioGroup.check(savedInt?: it.workoutsolo)
+            //binding.startTimeText.setText(savedStart?: it.starttime)
+            binding.endTimeText.setText(savedEnd?: it.endtime)
 
             if(it.date != "") {
                 binding.datetextView.setText(savedDate ?: it.date)
+            }
+            if(it.starttime != "") {
+                binding.startTimeText.setText(savedStart ?: it.starttime)
             }
 
         })
@@ -94,11 +102,20 @@ class EditorFragment : Fragment() {
         val year = cal.get(Calendar.YEAR)
         val month = cal.get(Calendar.MONTH) + 1
         val day = cal.get(Calendar.DAY_OF_MONTH)
+//        val hour = cal.get(Calendar.HOUR_OF_DAY)
+//        val minute = cal.get(Calendar.MINUTE)
 
         //Set the date to today
         if (binding.datetextView.text == "Workout Date" || binding.datetextView.text == "") {
             binding.datetextView.setText("" + day + "/" + month + "/" + year)
         }
+
+        UpdateTime()
+        //Set the start time to today
+//        if (binding.startTimeText.text == "Exercise Start Time" || binding.startTimeText.text == "") {
+//            binding.startTimeText.setText("" + day + "/" + month)
+//        }
+
 
         //Date button listener
         binding.dateButton.setOnClickListener{
@@ -110,27 +127,27 @@ class EditorFragment : Fragment() {
         }
 
         //Start time button listener
+        //The following method updates the start time text
         binding.startTimeButton.setOnClickListener{
-            val cal = Calendar.getInstance()
-            val timeSetListener = TimePickerDialog.OnTimeSetListener { timePicker, hour, minute ->
-                cal.set(Calendar.HOUR_OF_DAY, hour)
-                cal.set(Calendar.MINUTE, minute)
-                start_time_text.text = SimpleDateFormat("HH:mm").format(cal.time)
-            }
-            TimePickerDialog(requireContext(), timeSetListener, cal.get(Calendar.HOUR_OF_DAY), cal.get(Calendar.MINUTE), true).show()
+            UpdateTime()
         }
 
         //End time button listener
+        //The following method updates the end time text
         binding.endTimeButton.setOnClickListener{
             val cal = Calendar.getInstance()
-            val timeSetListener = TimePickerDialog.OnTimeSetListener { timePicker, hour, minute ->
-                cal.set(Calendar.HOUR_OF_DAY, hour)
-                cal.set(Calendar.MINUTE, minute)
-                end_time_text.text = SimpleDateFormat("HH:mm").format(cal.time)
-            }
-            TimePickerDialog(requireContext(), timeSetListener, cal.get(Calendar.HOUR_OF_DAY), cal.get(Calendar.MINUTE), true).show()
+            cal.set(Calendar.HOUR_OF_DAY, cal.get(Calendar.HOUR_OF_DAY))
+            cal.set(Calendar.MINUTE, cal.get(Calendar.MINUTE))
+            end_time_text.text = SimpleDateFormat("HH:mm").format(cal.time)
         }
         return binding.root
+    }
+
+    private fun UpdateTime(){
+        val cal = Calendar.getInstance()
+        cal.set(Calendar.HOUR_OF_DAY, cal.get(Calendar.HOUR_OF_DAY))
+        cal.set(Calendar.MINUTE, cal.get(Calendar.MINUTE))
+        binding.startTimeText.text = SimpleDateFormat("HH:mm").format(cal.time)
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
@@ -152,7 +169,12 @@ class EditorFragment : Fragment() {
         viewModel.currentWorkOut.value?.location = binding.editorlocation.text.toString()
         viewModel.currentWorkOut.value?.workoutsolo = binding.radioGroup.checkedRadioButtonId
         viewModel.currentWorkOut.value?.date = binding.datetextView.text.toString()
+        viewModel.currentWorkOut.value?.starttime = binding.startTimeText.text.toString()
+        viewModel.currentWorkOut.value?.endtime = binding.endTimeText.text.toString()
         viewModel.updateNote()
+
+
+        Toast.makeText(context,"this is toast message",Toast.LENGTH_SHORT).show()
 
         findNavController().navigateUp()
         return true
