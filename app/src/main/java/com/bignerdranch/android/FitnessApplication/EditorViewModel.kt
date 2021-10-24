@@ -28,7 +28,7 @@ class EditorViewModel(app: Application) : AndroidViewModel(app) {
         }
     }
 
-    fun updateNote() {
+    fun updateWorkout() {
         currentWorkOut.value?.let{
             it.workout = it.workout.trim()
             //it.location = it.location.trim()

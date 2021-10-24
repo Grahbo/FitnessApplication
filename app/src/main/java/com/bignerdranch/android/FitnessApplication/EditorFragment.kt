@@ -3,7 +3,6 @@ package com.bignerdranch.android.FitnessApplication
 import android.annotation.SuppressLint
 import android.app.Activity
 import android.app.DatePickerDialog
-import android.app.TimePickerDialog
 import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -12,8 +11,6 @@ import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
 import android.view.inputmethod.InputMethodManager
-import android.widget.Button
-import android.widget.DatePicker
 import android.widget.Toast
 import androidx.activity.OnBackPressedCallback
 import androidx.appcompat.app.AppCompatActivity
@@ -120,7 +117,6 @@ class EditorFragment : Fragment() {
         //Date button listener
         binding.dateButton.setOnClickListener{
             val dpDiag = DatePickerDialog(requireContext(), DatePickerDialog.OnDateSetListener{view, mYear, mMonth, mDay ->
-
                 datetextView.setText("" + mDay + "/" + mMonth + "/" + mYear)
             }, year, month, day)
             dpDiag.show()
@@ -135,19 +131,26 @@ class EditorFragment : Fragment() {
         //End time button listener
         //The following method updates the end time text
         binding.endTimeButton.setOnClickListener{
-            val cal = Calendar.getInstance()
-            cal.set(Calendar.HOUR_OF_DAY, cal.get(Calendar.HOUR_OF_DAY))
-            cal.set(Calendar.MINUTE, cal.get(Calendar.MINUTE))
-            end_time_text.text = SimpleDateFormat("HH:mm").format(cal.time)
+//            val cal = Calendar.getInstance()
+//            cal.set(Calendar.HOUR_OF_DAY, cal.get(Calendar.HOUR_OF_DAY))
+//            cal.set(Calendar.MINUTE, cal.get(Calendar.MINUTE))
+            end_time_text.text = SimpleDateFormat("HH:mm:ss").format(calendarItem().time)
         }
         return binding.root
     }
 
     private fun UpdateTime(){
+//        val cal = Calendar.getInstance()
+//        cal.set(Calendar.HOUR_OF_DAY, cal.get(Calendar.HOUR_OF_DAY))
+//        cal.set(Calendar.MINUTE, cal.get(Calendar.MINUTE))
+        binding.startTimeText.text = SimpleDateFormat("HH:mm:ss").format(calendarItem().time)
+    }
+
+    private fun calendarItem (): Calendar {
         val cal = Calendar.getInstance()
         cal.set(Calendar.HOUR_OF_DAY, cal.get(Calendar.HOUR_OF_DAY))
         cal.set(Calendar.MINUTE, cal.get(Calendar.MINUTE))
-        binding.startTimeText.text = SimpleDateFormat("HH:mm").format(cal.time)
+        return cal
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
@@ -171,10 +174,10 @@ class EditorFragment : Fragment() {
         viewModel.currentWorkOut.value?.date = binding.datetextView.text.toString()
         viewModel.currentWorkOut.value?.starttime = binding.startTimeText.text.toString()
         viewModel.currentWorkOut.value?.endtime = binding.endTimeText.text.toString()
-        viewModel.updateNote()
+        viewModel.updateWorkout()
 
 
-        Toast.makeText(context,"this is toast message",Toast.LENGTH_SHORT).show()
+        Toast.makeText(context,"WorkOut Updated",Toast.LENGTH_SHORT).show()
 
         findNavController().navigateUp()
         return true
