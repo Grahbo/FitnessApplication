@@ -25,6 +25,15 @@ data class WorkOutEntity(
 ) : Parcelable {
     constructor() : this(NEW_WORKOUT_ID, "", "", "", 0, "", "")
 
-    constructor(date: String, text: String, location: String, workoutsolo: Int, starttime: String, endtime: String)
-                : this(NEW_WORKOUT_ID, date, text, location, workoutsolo, starttime, endtime)
+    constructor(
+        date: String,
+        text: String,
+        location: String,
+        workoutsolo: Int,
+        starttime: String,
+        endtime: String
+    )
+            : this(NEW_WORKOUT_ID, date, text, location, workoutsolo, starttime, endtime)
 }
+
+

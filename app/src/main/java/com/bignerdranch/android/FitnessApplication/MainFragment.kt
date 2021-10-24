@@ -36,7 +36,7 @@ class MainFragment : Fragment(),
         binding = MainFragmentBinding.inflate(inflater, container, false)
         viewModel = ViewModelProvider(this).get(MainViewModel::class.java)
 
-        with(binding.recyclerView){
+        with(binding.recyclerView) {
             setHasFixedSize(true)
             val divider = DividerItemDecoration(
                 context, LinearLayoutManager(context).orientation
@@ -65,9 +65,9 @@ class MainFragment : Fragment(),
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
         val menuId =
-            if (this::adapter.isInitialized && adapter.selectedworkouts.isNotEmpty()){
+            if (this::adapter.isInitialized && adapter.selectedworkouts.isNotEmpty()) {
                 R.menu.menu_main_selected_items
-            }else {
+            } else {
                 R.menu.menu_main
             }
         inflater.inflate(menuId, menu)
@@ -75,7 +75,7 @@ class MainFragment : Fragment(),
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        return when (item.itemId){
+        return when (item.itemId) {
             R.id.action_delete -> deleteSelectedworkouts()
             R.id.action_delete_all_data -> deleteAllworkouts()
             else -> super.onOptionsItemSelected(item)
@@ -107,10 +107,11 @@ class MainFragment : Fragment(),
     }
 
     override fun onSaveInstanceState(outState: Bundle) {
-        if (this::adapter.isInitialized){
+        if (this::adapter.isInitialized) {
             outState.putParcelableArrayList(
                 SELECTED_FITNESS_KEY,
-            adapter.selectedworkouts)
+                adapter.selectedworkouts
+            )
         }
         super.onSaveInstanceState(outState)
     }

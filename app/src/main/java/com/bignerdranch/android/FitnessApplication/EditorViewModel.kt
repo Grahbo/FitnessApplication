@@ -14,13 +14,13 @@ class EditorViewModel(app: Application) : AndroidViewModel(app) {
     private val database = AppDB.getInstance(app)
     val currentWorkOut = MutableLiveData<WorkOutEntity>()
 
-    fun getWorkOutById(workOutId: Int){
+    fun getWorkOutById(workOutId: Int) {
         viewModelScope.launch {
-            withContext(Dispatchers.IO){
+            withContext(Dispatchers.IO) {
                 val note =
-                    if (workOutId != NEW_WORKOUT_ID){
+                    if (workOutId != NEW_WORKOUT_ID) {
                         database?.workOutDao()?.getWorkOutById(workOutId)
-                    }else{
+                    } else {
                         WorkOutEntity()
                     }
                 currentWorkOut.postValue(note!!)
@@ -29,18 +29,18 @@ class EditorViewModel(app: Application) : AndroidViewModel(app) {
     }
 
     fun updateWorkout() {
-        currentWorkOut.value?.let{
+        currentWorkOut.value?.let {
             it.workout = it.workout.trim()
             //it.location = it.location.trim()
-            if(it.id == NEW_WORKOUT_ID && it.workout.isEmpty()){
+            if (it.id == NEW_WORKOUT_ID && it.workout.isEmpty()) {
                 return
             }
 
             viewModelScope.launch {
-                withContext(Dispatchers.IO){
-                    if(it.workout.isEmpty()){
+                withContext(Dispatchers.IO) {
+                    if (it.workout.isEmpty()) {
                         database?.workOutDao()?.deleteWorkOut(it)
-                    }else{
+                    } else {
                         database?.workOutDao()?.insertWorkout(it)
                     }
                 }

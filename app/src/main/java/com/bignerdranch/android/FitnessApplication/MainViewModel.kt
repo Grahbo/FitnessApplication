@@ -18,7 +18,7 @@ class MainViewModel(app: Application) : AndroidViewModel(app) {
 
     fun deleteworkouts(selectedWorkOuts: List<WorkOutEntity>) {
         viewModelScope.launch {
-            withContext(Dispatchers.IO){
+            withContext(Dispatchers.IO) {
                 database?.workOutDao()?.deleteWorkOut(selectedWorkOuts)
             }
         }
@@ -26,7 +26,7 @@ class MainViewModel(app: Application) : AndroidViewModel(app) {
 
     fun deleteAllworkouts() {
         viewModelScope.launch {
-            withContext(Dispatchers.IO){
+            withContext(Dispatchers.IO) {
                 database?.workOutDao()?.deleteAllWorkOuts()
             }
         }

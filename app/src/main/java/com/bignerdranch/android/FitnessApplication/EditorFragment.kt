@@ -46,9 +46,9 @@ class EditorFragment : Fragment() {
 
 
         requireActivity().title =
-            if(args.workOutId == NEW_WORKOUT_ID) {
+            if (args.workOutId == NEW_WORKOUT_ID) {
                 getString(R.string.new_workout)
-            }else{
+            } else {
                 getString(R.string.edit_workout)
             }
 
@@ -59,14 +59,16 @@ class EditorFragment : Fragment() {
         binding.editorlocation.setText("")
         binding.radioGroup.check(0)
         binding.datetextView.setText("")
+        binding.endTimeText.setText("")
+        binding.startTimeText.setText("")
 
         requireActivity().onBackPressedDispatcher.addCallback(
             viewLifecycleOwner,
-            object : OnBackPressedCallback(true){
+            object : OnBackPressedCallback(true) {
                 override fun handleOnBackPressed() {
                     saveAndReturn()
                 }
-        })
+            })
 
         //bind data from DB
         viewModel.currentWorkOut.observe(viewLifecycleOwner, Observer {
@@ -76,22 +78,22 @@ class EditorFragment : Fragment() {
             val savedDate = savedInstanceState?.getString(SELECTED_DATE)
             val savedStart = savedInstanceState?.getString(STARTTIME)
             val savedEnd = savedInstanceState?.getString(ENDTIME)
-            binding.editorworkout.setText(savedWorkoutString?: it.workout)
-            binding.editorlocation.setText(savedLocationString?: it.location)
-            binding.radioGroup.check(savedInt?: it.workoutsolo)
+            binding.editorworkout.setText(savedWorkoutString ?: it.workout)
+            binding.editorlocation.setText(savedLocationString ?: it.location)
+            binding.radioGroup.check(savedInt ?: it.workoutsolo)
             //binding.startTimeText.setText(savedStart?: it.starttime)
-            binding.endTimeText.setText(savedEnd?: it.endtime)
+            binding.endTimeText.setText(savedEnd ?: it.endtime)
 
-            if(it.date != "") {
+
+            if (it.date != "") {
                 binding.datetextView.setText(savedDate ?: it.date)
             }
-            if(it.starttime != "") {
+            if (it.starttime != "") {
                 binding.startTimeText.setText(savedStart ?: it.starttime)
             }
 
         })
         viewModel.getWorkOutById(args.workOutId)
-
 
 
         //date picker properties
@@ -115,22 +117,28 @@ class EditorFragment : Fragment() {
 
 
         //Date button listener
-        binding.dateButton.setOnClickListener{
-            val dpDiag = DatePickerDialog(requireContext(), DatePickerDialog.OnDateSetListener{view, mYear, mMonth, mDay ->
-                datetextView.setText("" + mDay + "/" + mMonth + "/" + mYear)
-            }, year, month, day)
+        binding.dateButton.setOnClickListener {
+            val dpDiag = DatePickerDialog(
+                requireContext(),
+                DatePickerDialog.OnDateSetListener { view, mYear, mMonth, mDay ->
+                    datetextView.setText("" + mDay + "/" + mMonth + "/" + mYear)
+                },
+                year,
+                month,
+                day
+            )
             dpDiag.show()
         }
 
         //Start time button listener
         //The following method updates the start time text
-        binding.startTimeButton.setOnClickListener{
+        binding.startTimeButton.setOnClickListener {
             UpdateTime()
         }
 
         //End time button listener
         //The following method updates the end time text
-        binding.endTimeButton.setOnClickListener{
+        binding.endTimeButton.setOnClickListener {
 //            val cal = Calendar.getInstance()
 //            cal.set(Calendar.HOUR_OF_DAY, cal.get(Calendar.HOUR_OF_DAY))
 //            cal.set(Calendar.MINUTE, cal.get(Calendar.MINUTE))
@@ -139,19 +147,20 @@ class EditorFragment : Fragment() {
         return binding.root
     }
 
-    private fun UpdateTime(){
+    private fun UpdateTime() {
 //        val cal = Calendar.getInstance()
 //        cal.set(Calendar.HOUR_OF_DAY, cal.get(Calendar.HOUR_OF_DAY))
 //        cal.set(Calendar.MINUTE, cal.get(Calendar.MINUTE))
         binding.startTimeText.text = SimpleDateFormat("HH:mm:ss").format(calendarItem().time)
     }
 
-    private fun calendarItem (): Calendar {
+    private fun calendarItem(): Calendar {
         val cal = Calendar.getInstance()
         cal.set(Calendar.HOUR_OF_DAY, cal.get(Calendar.HOUR_OF_DAY))
         cal.set(Calendar.MINUTE, cal.get(Calendar.MINUTE))
         return cal
     }
+
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         return when (item.itemId) {
@@ -164,10 +173,9 @@ class EditorFragment : Fragment() {
 
         //hide keyboard after edit and fragment has closed
         val imm = requireActivity()
-            .getSystemService(Activity.INPUT_METHOD_SERVICE)as InputMethodManager
+            .getSystemService(Activity.INPUT_METHOD_SERVICE) as InputMethodManager
         imm.hideSoftInputFromWindow(binding.root.windowToken, 0)
-
-        //load the database information
+        //update the database information
         viewModel.currentWorkOut.value?.workout = binding.editorworkout.text.toString()
         viewModel.currentWorkOut.value?.location = binding.editorlocation.text.toString()
         viewModel.currentWorkOut.value?.workoutsolo = binding.radioGroup.checkedRadioButtonId
@@ -177,7 +185,7 @@ class EditorFragment : Fragment() {
         viewModel.updateWorkout()
 
 
-        Toast.makeText(context,"WorkOut Updated",Toast.LENGTH_SHORT).show()
+        Toast.makeText(context, "WorkOut Updated", Toast.LENGTH_SHORT).show()
 
         findNavController().navigateUp()
         return true
@@ -185,10 +193,10 @@ class EditorFragment : Fragment() {
 
     //the following method deals with rotating the device
     override fun onSaveInstanceState(outState: Bundle) {
-        with(binding.editorworkout){
+        with(binding.editorworkout) {
             outState.putString(FITNESS_TEXT_KEY, editorworkout.text.toString())
             outState.putString(SELECTED_LOCATION_KEY, editorlocation.text.toString())
-            //outState.putInt(CURSOR_POSITION_KEY, selectionStart)
+            outState.putInt(CURSOR_POSITION_KEY, selectionStart)
             outState.putInt(SELECTED_FITNESS_CHECK, radioGroup.checkedRadioButtonId)
             outState.putString(SELECTED_DATE, datetextView.text.toString())
             outState.putString(STARTTIME, start_time_text.text.toString())

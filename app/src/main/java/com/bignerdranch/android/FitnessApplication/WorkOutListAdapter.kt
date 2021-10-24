@@ -7,8 +7,9 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bignerdranch.android.FitnessApplication.data.WorkOutEntity
 import com.bignerdranch.android.FitnessApplication.databinding.ListItemBinding
 
-class WorkOutListAdapter(private val workoutsList: List<WorkOutEntity>,
-                         private val listener: ListItemListener
+class WorkOutListAdapter(
+    private val workoutsList: List<WorkOutEntity>,
+    private val listener: ListItemListener
 ) :
 
     RecyclerView.Adapter<WorkOutListAdapter.ViewHolder>() {
@@ -35,15 +36,15 @@ class WorkOutListAdapter(private val workoutsList: List<WorkOutEntity>,
             dateText.text = workout.date
             placeText.text = workout.location
 
-            root.setOnClickListener{
+            root.setOnClickListener {
                 listener.editWorkOut(workout.id)
             }
 
             fab.setOnClickListener {
-                if(selectedworkouts.contains(workout)){
+                if (selectedworkouts.contains(workout)) {
                     selectedworkouts.remove(workout)
                     fab.setImageResource(R.drawable.ic_note)
-                }else{
+                } else {
                     selectedworkouts.add(workout)
                     fab.setImageResource(R.drawable.ic_check)
                 }
@@ -51,16 +52,16 @@ class WorkOutListAdapter(private val workoutsList: List<WorkOutEntity>,
             }
 
             fab.setImageResource(
-                if (selectedworkouts.contains(workout)){
+                if (selectedworkouts.contains(workout)) {
                     R.drawable.ic_check
-                }else{
+                } else {
                     R.drawable.ic_note
                 }
             )
         }
     }
 
-    interface ListItemListener{
+    interface ListItemListener {
         fun editWorkOut(workOutId: Int)
         fun onItemSelectionChanged()
     }

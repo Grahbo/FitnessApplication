@@ -1,7 +1,10 @@
 package com.bignerdranch.android.FitnessApplication
 
+import android.content.Context
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.MotionEvent
+import android.view.inputmethod.InputMethodManager
 
 //my Main Activity
 

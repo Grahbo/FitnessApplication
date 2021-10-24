@@ -3,7 +3,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:clickable="true"
     tools:context="com.bignerdranch.android.FitnessApplication.EditorFragment">
+
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -38,9 +40,9 @@
             android:id="@+id/date_button"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:minHeight="48dp"
             android:layout_margin="16dp"
-            android:text="@string/select_date"/>
+            android:minHeight="48dp"
+            android:text="@string/select_date" />
 
         <TextView
             android:id="@+id/datetextView"
@@ -48,9 +50,9 @@
             android:layout_height="wrap_content"
             android:minHeight="48dp"
             android:text="@string/workout_date"
+            android:textAlignment="center"
             android:textAppearance="@style/TextAppearance.AppCompat.Medium"
-            tools:ignore="Autofill"
-            android:textAlignment="center" />
+            tools:ignore="Autofill" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -61,19 +63,19 @@
                 android:id="@+id/start_time_button"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:minHeight="48dp"
                 android:layout_margin="16dp"
                 android:layout_weight="1"
-                android:text="@string/start_time"/>
+                android:minHeight="48dp"
+                android:text="@string/start_time" />
 
             <Button
                 android:id="@+id/end_time_button"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:minHeight="48dp"
                 android:layout_margin="16dp"
                 android:layout_weight="1"
-                android:text="@string/end_time"/>
+                android:minHeight="48dp"
+                android:text="@string/end_time" />
 
         </LinearLayout>
 
@@ -100,10 +102,10 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:minHeight="48dp"
-                android:textAppearance="@style/TextAppearance.AppCompat.Medium"
-                tools:ignore="Autofill"
                 android:text="@string/exercise_end_time"
-                android:textAlignment="center" />
+                android:textAlignment="center"
+                android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                tools:ignore="Autofill" />
         </LinearLayout>
 
         <RadioGroup
