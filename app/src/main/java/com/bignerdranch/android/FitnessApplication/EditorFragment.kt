@@ -191,6 +191,8 @@ class EditorFragment : Fragment() {
             //outState.putInt(CURSOR_POSITION_KEY, selectionStart)
             outState.putInt(SELECTED_FITNESS_CHECK, radioGroup.checkedRadioButtonId)
             outState.putString(SELECTED_DATE, datetextView.text.toString())
+            outState.putString(STARTTIME, start_time_text.text.toString())
+            outState.putString(ENDTIME, end_time_text.text.toString())
         }
         super.onSaveInstanceState(outState)
     }
